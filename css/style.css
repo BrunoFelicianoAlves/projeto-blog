@@ -1,0 +1,154 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f5f5f5;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #000003;
+    
+    /* background-color: #4CAF50; */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+h2 {
+    padding: 10px;
+}
+
+/* Menu de navegação */
+nav {
+    /* background-color: #388E3C; */
+    background-color: #647bb5;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: 14px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #2e243d;
+}
+
+/* Container principal */
+main {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    flex: 1;
+}
+
+/* Tornar imagens e posts fluidos */
+img, .post-content {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+/* Card dos posts */
+.post {
+    background: white;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.post img {
+    width: 100%;
+    display: block;
+}
+
+/* .post-content {
+    padding: 15px;
+    min-width: 900px;
+    width: 100%;
+} */
+
+.post-content {
+    padding: 10px;
+    min-width: 900px;
+    min-height: 500px; /* posts curtos ficam maiores */
+}
+
+.post-content h2 {
+    margin-top: 0;
+    color: #4CAF50;
+}
+
+.post-content p {
+    line-height: 1.6;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+}
+
+/* Ajuste de layout para telas pequenas */
+@media (max-width: 900px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li a {
+        padding: 10px 15px;
+    }
+
+    .post-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .post-content p, .post-content li {
+        font-size: 1rem;
+    }
+}
+
+/* Ajuste ainda menor para celular */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .post-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .post-content p, .post-content li {
+        font-size: 0.9rem;
+    }
+}
