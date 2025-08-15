@@ -114,15 +114,15 @@ footer {
     color: white;
 }
 
-/* Ajuste de layout para telas pequenas */
-@media (max-width: 900px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
 
-    nav ul li a {
-        padding: 10px 15px;
+/* Para telas pequenas */
+@media (max-width: 900px) {
+    .post-content {
+        padding: 10px;
+        width: 100%;  /* ocupa toda a largura do main */
+        min-width: auto; /* remove valor fixo */
+        max-width: 100%; /* garante que não ultrapasse a tela */
+        min-height: 500px;
     }
 
     .post-content h2 {
@@ -134,14 +134,13 @@ footer {
     }
 }
 
-/* Ajuste ainda menor para celular */
 @media (max-width: 600px) {
-    header h1 {
-        font-size: 1.5rem;
-    }
-
-    header p {
-        font-size: 1rem;
+    .post-content {
+        padding: 10px;
+        width: 100%;
+        min-width: auto;
+        max-width: 100%;
+        min-height: 500px;
     }
 
     .post-content h2 {
