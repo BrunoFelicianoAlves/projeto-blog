@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto 1</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Estudando Programação</h1>
+    <p>Um espaço para compartilhar ideias</p>
+  </header>
+
+  <!-- Menu de navegação -->
+  <div id="menu"></div>
+
+  <main>
+    <article class="post">
+      <div class="post-content">
+
+        <div class="carousel">
+          <div class="carousel-images" id="carousel-images">
+            <img src="/images/imgs-projeto/projeto-spring-login/img1-projeto-spring-login.png" alt="Imagem 1">
+            <img src="/images/imgs-projeto/projeto-spring-login/img2-projeto-spring-login.png" alt="Imagem 2">
+            <img src="/images/imgs-projeto/projeto-spring-login/img3-projeto-spring-login.png" alt="Imagem 3">
+            <img src="/images/imgs-projeto/projeto-spring-login/img4-projeto-spring-login.png" alt="Imagem 4">
+          </div>
+          <button class="prev" onclick="mudarSlide(-1)">❮</button>
+          <button class="next" onclick="mudarSlide(1)">❯</button>
+        </div>
+
+        <div class="thumbnails" id="thumbnails">
+          <img src="/images/imgs-projeto/projeto-spring-login/img1-projeto-spring-login.png" onclick="irParaSlide(0)" alt="Thumb 1">
+          <img src="/images/imgs-projeto/projeto-spring-login/img2-projeto-spring-login.png" onclick="irParaSlide(1)" alt="Thumb 2">
+          <img src="/images/imgs-projeto/projeto-spring-login/img3-projeto-spring-login.png" onclick="irParaSlide(2)" alt="Thumb 3">
+          <img src="/images/imgs-projeto/projeto-spring-login/img4-projeto-spring-login.png" onclick="irParaSlide(3)" alt="Thumb 4">
+        </div>
+
+        <h2>Cadastro e visualização de filmes</h2>
+        <ul>
+          <li><strong>Projeto 1 - </strong> Desenvolvido com o intuito de:
+            <br> – Cadastrar usuários.
+            <br> – Cadastrar, editar e excluir filmes.
+            <br> – Visualizar capa e trailer dos filmes.
+            <br><br>
+            <a href="https://github.com/BrunoFelicianoAlves/projeto-springboot-login" target="_blank">Filmes</a>
+            <br><br>
+          </li>
+        </ul>
+      </div>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>© 2025 - Meu Blog Simples. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    let indice = 0;
+    const imagens = document.getElementById("carousel-images");
+    const total = imagens.children.length;
+    const thumbs = document.getElementById("thumbnails").children;
+
+    function atualizarThumbnails() {
+      for (let i = 0; i < thumbs.length; i++) {
+        thumbs[i].classList.remove("ativo");
+      }
+      thumbs[indice].classList.add("ativo");
+    }
+
+    function mudarSlide(direcao) {
+      indice = (indice + direcao + total) % total;
+      imagens.style.transform = `translateX(${-indice * 100}%)`;
+      atualizarThumbnails();
+    }
+
+    function irParaSlide(n) {
+      indice = n;
+      imagens.style.transform = `translateX(${-indice * 100}%)`;
+      atualizarThumbnails();
+    }
+
+    // Troca automática a cada 5s
+    setInterval(() => mudarSlide(1), 5000);
+
+    // Ativar a primeira miniatura no início
+    atualizarThumbnails();
+  </script>
+
+    <script>
+  fetch("../nav.html")
+      .then(response => response.text())
+      .then(data => {
+      document.getElementById("menu").innerHTML = data;
+      });
+  </script>
+
+</body>
+</html>

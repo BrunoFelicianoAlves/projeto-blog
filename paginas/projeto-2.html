@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto 2</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Estudando Programação</h1>
+    <p>Um espaço para compartilhar ideias</p>
+  </header>
+
+  <!-- Menu de navegação -->
+  <div id="menu"></div>
+
+  <main>
+    <article class="post">
+      <div class="post-content">
+
+        <div class="carousel">
+          <div class="carousel-images" id="carousel-images">
+            <img src="/images/imgs-projeto/projeto-blog/img1-projeto-blog.png" alt="Imagem 1">
+            <img src="/images/imgs-projeto/projeto-blog/img2-projeto-blog.png" alt="Imagem 2">
+          </div>
+          <button class="prev" onclick="mudarSlide(-1)">❮</button>
+          <button class="next" onclick="mudarSlide(1)">❯</button>
+        </div>
+
+        <div class="thumbnails" id="thumbnails">
+          <img src="/images/imgs-projeto/projeto-blog/img1-projeto-blog.png" onclick="irParaSlide(0)" alt="Thumb 1">
+          <img src="/images/imgs-projeto/projeto-blog/img2-projeto-blog.png" onclick="irParaSlide(1)" alt="Thumb 2">
+        </div>
+
+        <h2>Visualizar projetos desenvolvidos</h2>
+        <ul>
+          <li><strong>Projeto 2 - </strong> 
+            <br> – Possui página inicio.
+            <br> – Possui páginas com projetos.
+            <br><br>
+            <a href="https://github.com/BrunoFelicianoAlves/projeto-blog" target="_blank">Visualizar projetos</a>
+            <br><br>
+          </li>
+        </ul>
+      </div>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>© 2025 - Meu Blog Simples. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    let indice = 0;
+    const imagens = document.getElementById("carousel-images");
+    const total = imagens.children.length;
+    const thumbs = document.getElementById("thumbnails").children;
+
+    function atualizarThumbnails() {
+      for (let i = 0; i < thumbs.length; i++) {
+        thumbs[i].classList.remove("ativo");
+      }
+      thumbs[indice].classList.add("ativo");
+    }
+
+    function mudarSlide(direcao) {
+      indice = (indice + direcao + total) % total;
+      imagens.style.transform = `translateX(${-indice * 100}%)`;
+      atualizarThumbnails();
+    }
+
+    function irParaSlide(n) {
+      indice = n;
+      imagens.style.transform = `translateX(${-indice * 100}%)`;
+      atualizarThumbnails();
+    }
+
+    // Troca automática a cada 5s
+    setInterval(() => mudarSlide(1), 5000);
+
+    // Ativar a primeira miniatura no início
+    atualizarThumbnails();
+  </script>
+
+  <script>
+  fetch("../nav.html")
+      .then(response => response.text())
+      .then(data => {
+      document.getElementById("menu").innerHTML = data;
+      });
+  </script>
+
+</body>
+</html>
